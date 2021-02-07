@@ -13,3 +13,10 @@ the following:
 - let the user customize the aquarium to some degree
 - implement a feeding system
 - create a sense of progression to motivate gameplay activity
+
+## User Stories
+
+- As a user, I want to be able to add a new octopus to my aquarium
+- As a user, I want to be able to add decorations to my aquarium
+- As a user, I want to be able to select an octopus and view its status
+- As a user, I want to be able to feed my octopuses
