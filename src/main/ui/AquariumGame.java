@@ -210,7 +210,8 @@ public class AquariumGame {
         System.out.println("Give it a tooltip:");
         String tooltip = input.nextLine();
         if (name.equals("")) {
-            decoration = new Decoration(description, tooltip);
+            decoration = new Decoration();
+            aquarium.editDecoration(decoration.getName(), description, tooltip);
         } else {
             decoration = new Decoration(name, description, tooltip);
         }

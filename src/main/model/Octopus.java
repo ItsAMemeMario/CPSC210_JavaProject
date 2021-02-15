@@ -30,6 +30,8 @@ public class Octopus {
             growth++;
         } else if (size < MAX_SIZE) {
             size++;
+        } else {
+            size += 0;
         }
     }
 
@@ -41,16 +43,6 @@ public class Octopus {
     // EFFECTS: returns true if octopus is a baby
     public boolean isBaby() {
         return size == 0;
-    }
-
-    // EFFECTS: returns octopus growth stage
-    public int getGrowth() {
-        return growth;
-    }
-
-    // EFFECTS: returns octopus size
-    public int getSize() {
-        return size;
     }
 
     // EFFECTS: returns octopus' stats in a string

@@ -13,13 +13,6 @@ public class Decoration {
         this.tooltip = "";
     }
 
-    // EFFECTS: constructs decoration with an automatically-assigned name and given descriptions
-    public Decoration(String description, String tooltip) {
-        this.name = "Decoration" + id++;
-        this.description = description;
-        this.tooltip = tooltip;
-    }
-
     // EFFECTS: constructs decoration with given name, description, and tooltip
     public Decoration(String name, String description, String tooltip) {
         this.name = name;
