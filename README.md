@@ -18,5 +18,7 @@ the following:
 
 - As a user, I want to be able to add a new octopus to my aquarium
 - As a user, I want to be able to add decorations to my aquarium
-- As a user, I want to be able to select an octopus and view its status
+- As a user, I want to be able to view the list of octopuses I have
+- As a user, I want to be able to select an octopus and view its statistics
+- As a user, I want to be able to select a decoration and view its details
 - As a user, I want to be able to feed my octopuses
