@@ -1,10 +1,14 @@
 package model;
 
-public class Octopus {
+import netscape.javascript.JSObject;
+import org.json.JSONObject;
+import persistence.Writable;
+
+public class Octopus implements Writable {
     private static int id = 1;               // tracks the number of octopuses. Assigned to name if no name is given
     private String name;                     // name of the octopus
-    private int size = 0;                    // 0 if octopus is a baby. Increases when fed if octopus is grown
     private int growth = 1;                  // < 5 when octopus is a baby. Increases when fed and stops at 5
+    private int size = 0;                    // 0 if octopus is a baby. Increases when fed if octopus is grown
     public static final int GROWTH_REQ = 5; // number of feedings required to grow
     public static final int MAX_SIZE = 10;
 
@@ -17,6 +21,13 @@ public class Octopus {
     // EFFECTS: constructs a baby octopus with given name
     public Octopus(String name) {
         this.name = name;
+    }
+
+    // EFFECTS: constructs octopus with given stats. Used only for reading from file
+    public Octopus(String name, int growth, int size) {
+        this.name = name;
+        this.growth = growth;
+        this.size = size;
     }
 
     // MODIFIES: this
@@ -54,5 +65,14 @@ public class Octopus {
         } else {
             return name + "\n\nSize: " + size + "(MAX)";
         }
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("growth", growth);
+        json.put("size", size);
+        return json;
     }
 }

@@ -1,6 +1,9 @@
 package model;
 
-public class Decoration {
+import org.json.JSONObject;
+import persistence.Writable;
+
+public class Decoration implements Writable {
     private static int id = 1;      // tracks the number of decorations. Assigned to name if no name is given
     private String name;        // name of decoration
     private String description; // description of decoration
@@ -36,5 +39,14 @@ public class Decoration {
     // EFFECTS: returns details of decoration in a String
     public String getDetails() {
         return name + "\n\n" + description + "\n\n\033[3m\"" + tooltip + "\"\033[0m";
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("description", description);
+        json.put("tooltip", tooltip);
+        return json;
     }
 }

@@ -1,9 +1,14 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public class Aquarium {
+public class Aquarium implements Writable {
     public static final int OCTOPUS_CAPACITY = 10;
     public static final int DECORATION_CAPACITY = 10;
     private List<Octopus> octopuses;       // list of octopuses
@@ -171,5 +176,45 @@ public class Aquarium {
             list += "- " + d.getName() + "\n";
         }
         return list;
+    }
+
+    // EFFECTS: returns an unmodifiable list of octopuses in this aquarium
+    public List<Octopus> getOctopuses() {
+        return Collections.unmodifiableList(octopuses);
+    }
+
+    // EFFECTS: returns an unmodifiable list of decorations in this aquarium
+    public List<Decoration> getDecorations() {
+        return Collections.unmodifiableList(decorations);
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("octopuses", octopusesToJson());
+        json.put("decorations", decorationsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns octopuses as a JSONArray
+    public JSONArray octopusesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Octopus o: octopuses) {
+            jsonArray.put(o.toJson());
+        }
+
+        return jsonArray;
+    }
+
+    // EFFECTS: returns decorations as a JSONArray
+    public JSONArray decorationsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Decoration d: decorations) {
+            jsonArray.put(d.toJson());
+        }
+
+        return jsonArray;
     }
 }

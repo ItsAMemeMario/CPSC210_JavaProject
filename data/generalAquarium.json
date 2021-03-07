@@ -1,0 +1,26 @@
+{
+    "octopuses": [
+        {
+            "size": 6,
+            "name": "Tomato",
+            "growth": 6
+        },
+        {
+            "size": 0,
+            "name": "Orange",
+            "growth": 1
+        }
+    ],
+    "decorations": [
+        {
+            "name": "Pineapple",
+            "tooltip": "Ooooohhhh",
+            "description": "A large, hollow pineapple"
+        },
+        {
+            "name": "Octurd",
+            "tooltip": "Why",
+            "description": "An eight-layer poop turd"
+        }
+    ]
+}

@@ -3,17 +3,26 @@ package ui;
 import model.Aquarium;
 import model.Decoration;
 import model.Octopus;
+import persistence.JsonWriter;
+import persistence.JsonReader;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class AquariumGame {
+    private static final String JSON_STORE = "./data/aquarium.json";
     private Aquarium aquarium;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // initializes fields and runs game
-    public AquariumGame() {
+    public AquariumGame() throws FileNotFoundException {
         aquarium = new Aquarium();
         input = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runGame();
     }
 
@@ -33,6 +42,13 @@ public class AquariumGame {
             }
         }
 
+        System.out.println("Would you like to save your aquarium before quitting?\ny/n");
+        command = input.nextLine().toLowerCase();
+        if (command.equals("y")) {
+            saveAquarium();
+        } else {
+            System.out.println("Aquarium not saved.");
+        }
 
         System.out.println("\nThanks for playing!");
     }
@@ -49,16 +65,11 @@ public class AquariumGame {
             command = input.nextLine().toLowerCase();
             processDecorationCommand(command);
         } else if (command.equals("e")) {
-            System.out.println("Are you sure you want to clear all your octopuses and decorations?");
-            System.out.println("Type \"yes\" to confirm");
-            command = input.nextLine().toLowerCase();
-            if (command.equals("yes")) {
-                aquarium.clearOctopus();
-                aquarium.clearDecoration();
-                System.out.println("Your aquarium has been emptied.");
-            } else {
-                System.out.println("Emptying cancelled.");
-            }
+            doClearAquarium();
+        } else if (command.equals("s")) {
+            saveAquarium();
+        } else if (command.equals("l")) {
+            loadAquarium();
         } else {
             System.out.println("Invalid input.\n");
         }
@@ -102,6 +113,8 @@ public class AquariumGame {
         System.out.println("\to -> octopus");
         System.out.println("\td -> decoration");
         System.out.println("\te -> empty aquarium");
+        System.out.println("\ts -> save aquarium to file");
+        System.out.println("\tl -> load aquarium from file");
         System.out.println("\tq -> quit game");
     }
 
@@ -127,6 +140,8 @@ public class AquariumGame {
         System.out.println("\tInput any other command to go back to main menu.");
     }
 
+    // MODIFIES: this
+    // EFFECTS: conducts adding octopus
     private void doAddOctopus() {
         Octopus octopus;
 
@@ -142,6 +157,8 @@ public class AquariumGame {
         System.out.println(octopus.getName() + " has been added to your aquarium!");
     }
 
+    // MODIFIES: this
+    // EFFECTS: conducts removing octopus
     private void doRemoveOctopus() {
         System.out.println("Which octopus do you want to remove?");
         String name = input.nextLine();
@@ -154,6 +171,8 @@ public class AquariumGame {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: conducts feeding octopus
     private void doFeedOctopus() {
         System.out.println("Which octopus do you want to feed?");
         String name = input.nextLine();
@@ -185,6 +204,8 @@ public class AquariumGame {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: conducts checking octopus
     private void doCheckOctopus() {
         System.out.println("Which octopus do you want to check?");
         String name = input.nextLine();
@@ -196,10 +217,14 @@ public class AquariumGame {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: lists octopuses
     private void doListOctopus() {
         System.out.println("\n" + aquarium.listOctopus());
     }
 
+    // MODIFIES: this
+    // EFFECTS: conducts adding decoration
     private void doAddDecoration() {
         Decoration decoration;
 
@@ -220,6 +245,8 @@ public class AquariumGame {
         System.out.println(decoration.getName() + " has been added to your aquarium!");
     }
 
+    // MODIFIES: this
+    // EFFECTS: conducts removing decoration
     private void doRemoveDecoration() {
         System.out.println("Which decoration do you want to remove?");
         String name = input.nextLine();
@@ -232,6 +259,8 @@ public class AquariumGame {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: conducts editing decoration
     private void doEditDecoration() {
         System.out.println("Which decoration do you want to edit?");
         String name = input.nextLine();
@@ -249,6 +278,8 @@ public class AquariumGame {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: conducts checking decoration
     private void doCheckDecoration() {
         System.out.println("Which decoration do you want to check?");
         String name = input.nextLine();
@@ -260,11 +291,52 @@ public class AquariumGame {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: lists decorations
     private void doListDecoration() {
         System.out.println("\n" + aquarium.listDecoration());
     }
 
+    // MODIFIES: this
+    // EFFECTS: processes aquarium clearing
+    private void doClearAquarium() {
+        System.out.println("Are you sure you want to clear all your octopuses and decorations?");
+        System.out.println("Type \"yes\" to confirm");
+        String command = input.nextLine().toLowerCase();
+        if (command.equals("yes")) {
+            aquarium.clearOctopus();
+            aquarium.clearDecoration();
+            System.out.println("Your aquarium has been emptied.");
+        } else {
+            System.out.println("Emptying cancelled.");
+        }
+    }
+
+    // EFFECTS: prints object not found message
     private void notFoundMessage(String name) {
         System.out.println(name + " is not in your aquarium.");
+    }
+
+    // EFFECTS: saves aquarium to file
+    private void saveAquarium() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(aquarium);
+            jsonWriter.close();
+            System.out.println("Saved aquarium to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads aquarium from file
+    private void loadAquarium() {
+        try {
+            aquarium = jsonReader.read();
+            System.out.println("Loaded aquarium from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 }
