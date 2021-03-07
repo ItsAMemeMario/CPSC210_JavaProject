@@ -22,3 +22,6 @@ the following:
 - As a user, I want to be able to select an octopus and view its statistics
 - As a user, I want to be able to select a decoration and view its details
 - As a user, I want to be able to feed my octopuses
+- As a user, I want to be able to save my aquarium to file
+- As a user, I want to be reminded to save my aquarium before exiting the game
+- As a user, I want to be given the option to load my aquarium from file when I restart the game
