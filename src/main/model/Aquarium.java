@@ -189,6 +189,7 @@ public class Aquarium implements Writable {
     }
 
     @Override
+    // EFFECTS: returns aquarium as JSON object
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("octopuses", octopusesToJson());
