@@ -23,7 +23,7 @@ public class Octopus implements Writable {
         this.name = name;
     }
 
-    // EFFECTS: constructs octopus with given stats. Used only for reading from file
+    // EFFECTS: constructs octopus with given stats. Used only for reading from file and testing
     public Octopus(String name, int growth, int size) {
         this.name = name;
         this.growth = growth;
@@ -34,13 +34,10 @@ public class Octopus implements Writable {
     // EFFECTS: increases octopus growth if octopus is a baby, grows octopus by 1 size and stop at limit otherwise
     //          if growth requirement is reached, octopus grows up
     public void eat() {
-        if (growth == GROWTH_REQ) {
-            growth++;
-            size = 1;
+        if (growth == GROWTH_REQ && size < MAX_SIZE) {
+            size++;
         } else if (growth < GROWTH_REQ) {
             growth++;
-        } else if (size < MAX_SIZE) {
-            size++;
         } else {
             size += 0;
         }
@@ -49,6 +46,16 @@ public class Octopus implements Writable {
     // EFFECTS: returns octopus name
     public String getName() {
         return name;
+    }
+
+    // EFFECTS: returns octopus growth stage
+    public int getGrowth() {
+        return growth;
+    }
+
+    // EFFECTS: returns octopus size
+    public int getSize() {
+        return size;
     }
 
     // EFFECTS: returns true if octopus is a baby

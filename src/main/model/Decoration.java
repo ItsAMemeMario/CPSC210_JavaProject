@@ -28,6 +28,16 @@ public class Decoration implements Writable {
         return name;
     }
 
+    // EFFECTS: returns decoration description
+    public String getDescription() {
+        return description;
+    }
+
+    // EFFECTS: returns decoration description
+    public String getTooltip() {
+        return tooltip;
+    }
+
     public void changeDescription(String description) {
         this.description = description;
     }

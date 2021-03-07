@@ -1,0 +1,8 @@
+{
+    "octopuses": [{
+        "size": 6,
+        "name": "orange",
+        "growth": 5
+    }],
+    "decorations": []
+}
