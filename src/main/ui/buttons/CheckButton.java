@@ -1,4 +1,4 @@
-package model.buttons;
+package ui.buttons;
 
 import ui.AquariumGameGUI;
 
@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static model.CursorMode.CHECK;
+import static ui.CursorMode.CHECK;
 
 // Button to enable checking octopuses
 public class CheckButton extends JButton implements ActionListener {

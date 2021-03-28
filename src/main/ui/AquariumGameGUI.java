@@ -1,9 +1,8 @@
 package ui;
 
 import model.Aquarium;
-import model.CursorMode;
 import model.Octopus;
-import model.buttons.*;
+import ui.buttons.*;
 
 import javax.swing.*;
 import java.awt.*;

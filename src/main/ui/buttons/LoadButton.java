@@ -1,4 +1,4 @@
-package model.buttons;
+package ui.buttons;
 
 import model.Aquarium;
 import model.Octopus;

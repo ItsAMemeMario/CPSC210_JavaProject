@@ -1,6 +1,5 @@
 package ui;
 
-import model.CursorMode;
 import model.Octopus;
 
 import javax.imageio.ImageIO;
