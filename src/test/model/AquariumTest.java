@@ -16,7 +16,7 @@ class AquariumTest {
 
     @Test
     public void testAddAndRemoveOctopus() {
-        Octopus octopus1 = new Octopus();
+        Octopus octopus1 = new Octopus("");
         assertFalse(aquarium.removeOctopus(octopus1.getName()));
         assertFalse(aquarium.hasOctopus("Orange"));
         assertEquals(0, aquarium.getNumOctopus());
