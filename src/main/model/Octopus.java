@@ -17,10 +17,12 @@ public class Octopus implements Writable {
         this.name = "Octopus" + id++;
     }
 
-    // REQUIRES: name is not empty
     // EFFECTS: constructs a baby octopus with given name
     public Octopus(String name) {
-        this.name = name;
+        this();
+        if (!name.equals("")) {
+            this.name = name;
+        }
     }
 
     // EFFECTS: constructs octopus with given stats. Used only for reading from file and testing

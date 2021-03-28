@@ -1,8 +1,4 @@
-package ui;
-
-import model.Aquarium;
-import model.Decoration;
-import model.Octopus;
+package ui.console;
 
 import java.io.FileNotFoundException;
 

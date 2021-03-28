@@ -1,8 +1,25 @@
 {
-    "octopuses": [{
-        "size": 6,
-        "name": "orange",
-        "growth": 5
-    }],
+    "octopuses": [
+        {
+            "size": 0,
+            "name": "Octopus1",
+            "growth": 1
+        },
+        {
+            "size": 9,
+            "name": "Orange",
+            "growth": 5
+        },
+        {
+            "size": 3,
+            "name": "Squishy",
+            "growth": 5
+        },
+        {
+            "size": 0,
+            "name": "QQ",
+            "growth": 5
+        }
+    ],
     "decorations": []
 }
