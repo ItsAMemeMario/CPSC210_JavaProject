@@ -41,6 +41,7 @@ public class LoadButton extends JButton implements ActionListener {
                 for (Octopus o: aquarium.getOctopuses()) {
                     game.addOctopus(o);
                 }
+                game.update();
                 System.out.println("Loaded aquarium from " + JSON_STORE);
             } catch (IOException exception) {
                 System.out.println("Unable to read from file: " + JSON_STORE);

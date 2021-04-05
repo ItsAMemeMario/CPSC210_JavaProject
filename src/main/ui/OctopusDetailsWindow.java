@@ -62,6 +62,7 @@ public class OctopusDetailsWindow extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == removeButton) {
             game.remove(interactiveOctopus);
+            game.getAquarium().removeOctopus(octopus.getName());
             this.setVisible(false);
             game.update();
         }

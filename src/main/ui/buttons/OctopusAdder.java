@@ -10,6 +10,9 @@ import java.awt.event.ActionListener;
 
 // Button to add octopus to aquarium
 public class OctopusAdder extends JButton implements ActionListener {
+    public static final int WIDTH = 90;
+    public static final int HEIGHT = 30;
+
     private AquariumGameGUI game;
     private Aquarium aquarium;
     private JFrame assignName;
@@ -21,7 +24,7 @@ public class OctopusAdder extends JButton implements ActionListener {
     public OctopusAdder(AquariumGameGUI game, Aquarium aquarium) {
         super("+Octopus");
         setFocusable(false);
-        setBounds(280, 10, 90, 30);
+        setBounds(10, 10, WIDTH, HEIGHT);
         addActionListener(this);
 
         this.game = game;
@@ -75,6 +78,7 @@ public class OctopusAdder extends JButton implements ActionListener {
             } else {
                 Octopus octopus = new Octopus(inputBox.getText());
                 game.addOctopus(octopus);
+                game.update();
                 assignName.setVisible(false);
             }
         }

@@ -27,9 +27,9 @@ public class AquariumGameGUI extends JFrame {
 
     private CursorMode cursorMode;
 
-    private CheckButton checkButton;
-    private MoveButton moveButton;
-    private FeedButton feedButton;
+    private CursorModeButton checkButton;
+    private CursorModeButton moveButton;
+    private CursorModeButton feedButton;
 
     private OctopusAdder octopusAdder;
 
@@ -53,6 +53,11 @@ public class AquariumGameGUI extends JFrame {
         setVisible(true);
     }
 
+    // EFFECTS: returns the aquarium
+    public Aquarium getAquarium() {
+        return aquarium;
+    }
+
     // EFFECTS: returns cursor mode
     public CursorMode getCursorMode() {
         return cursorMode;
@@ -60,20 +65,20 @@ public class AquariumGameGUI extends JFrame {
 
     // EFFECTS: generates main menu buttons
     private void generateButtons() {
+        octopusAdder = new OctopusAdder(this, aquarium);
+
         checkButton = new CheckButton(this);
         moveButton = new MoveButton(this);
         feedButton = new FeedButton(this);
-
-        octopusAdder = new OctopusAdder(this, aquarium);
 
         clear = new ClearButton(this, aquarium);
         save = new SaveButton(aquarium);
         load = new LoadButton(this, aquarium);
 
+        add(octopusAdder);
         add(checkButton);
         add(moveButton);
         add(feedButton);
-        add(octopusAdder);
 
         add(clear);
         add(save);
@@ -97,7 +102,6 @@ public class AquariumGameGUI extends JFrame {
             InteractiveOctopus interactiveOctopus = new InteractiveOctopus(octopus, this);
             add(interactiveOctopus);
             octopuses.add(interactiveOctopus);
-            update();
         }
     }
 

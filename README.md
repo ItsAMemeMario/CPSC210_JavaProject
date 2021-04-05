@@ -25,3 +25,8 @@ the following:
 - As a user, I want to be able to save my aquarium to file
 - As a user, I want to be reminded to save my aquarium before exiting the game
 - As a user, I want to be given the option to load my aquarium from file when I restart the game
+
+## Phase 4: Task 2
+
+I have chosen to implement the second option for phase 4 of this project. The CursorModeButton class is the superclass
+of all buttons which change the cursor mode upon being clicked (check, move, and feed).
