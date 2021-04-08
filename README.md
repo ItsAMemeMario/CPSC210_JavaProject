@@ -30,3 +30,10 @@ the following:
 
 I have chosen to implement the second option for phase 4 of this project. The CursorModeButton class is the superclass
 of all buttons which change the cursor mode upon being clicked (check, move, and feed).
+
+## Phase 4: Task 3
+
+The UML class design diagram shows an excessive amount of coupling. For example, ClearButton calls clearOctopus() in
+Aquarium and AquariumGameGUI, when the call to Aquarium.clearOctopus() could have just been included in
+AquariumGameGUI.clearOctopus to remove the need for an Aquarium field in ClearButton. With the lecture material from the
+Design module in mind, a lot of redundant design can be avoided.
