@@ -1,34 +1,14 @@
 {
     "octopuses": [
         {
-            "size": 10,
+            "size": 1,
             "name": "octo",
             "growth": 5
         },
         {
-            "size": 0,
+            "size": 10,
             "name": "orange",
-            "growth": 4
-        },
-        {
-            "size": 1,
-            "name": "QQ",
             "growth": 5
-        },
-        {
-            "size": 0,
-            "name": "Octopus4",
-            "growth": 1
-        },
-        {
-            "size": 0,
-            "name": "Octopus5",
-            "growth": 1
-        },
-        {
-            "size": 0,
-            "name": "Octopus6",
-            "growth": 1
         }
     ],
     "decorations": []
