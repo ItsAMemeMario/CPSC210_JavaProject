@@ -1,14 +1,54 @@
 {
     "octopuses": [
         {
-            "size": 1,
-            "name": "octo",
+            "size": 0,
+            "name": "Octopus3",
+            "growth": 4
+        },
+        {
+            "size": 0,
+            "name": "Octopus4",
+            "growth": 2
+        },
+        {
+            "size": 0,
+            "name": "Octopus5",
+            "growth": 1
+        },
+        {
+            "size": 0,
+            "name": "Octopus6",
+            "growth": 3
+        },
+        {
+            "size": 0,
+            "name": "Octopus8",
+            "growth": 2
+        },
+        {
+            "size": 0,
+            "name": "Octopus9",
+            "growth": 3
+        },
+        {
+            "size": 0,
+            "name": "Octopus10",
             "growth": 5
         },
         {
-            "size": 10,
-            "name": "orange",
+            "size": 0,
+            "name": "Octopus11",
+            "growth": 1
+        },
+        {
+            "size": 0,
+            "name": "Octopus12",
             "growth": 5
+        },
+        {
+            "size": 0,
+            "name": "Octopus8",
+            "growth": 2
         }
     ],
     "decorations": []
